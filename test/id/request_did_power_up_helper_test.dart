@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
@@ -10,7 +10,7 @@ import 'package:uuid/uuid.dart';
 void main() {
   group('Functions of "RequestDidPowerUpHelper" class', () {
     final networkInfo = NetworkInfo(
-      bech32Hrp: 'did:com:',
+      bech32Hrp: 'did:vow:',
       lcdUrl: Uri.parse(''),
     );
     const mnemonicString =
@@ -44,7 +44,7 @@ void main() {
       });
 
       final keyPair = await KeysHelper.generateRsaKeyPair(
-        keyType: CommercioRSAKeyType.verification,
+        keyType: VowRSAKeyType.verification,
       );
 
       const powerUpProof = 'powerUpProof';

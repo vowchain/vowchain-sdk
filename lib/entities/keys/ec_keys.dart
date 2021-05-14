@@ -1,14 +1,14 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/entities/export.dart';
+import 'package:vowchainsdk/entities/export.dart';
 import 'package:pointycastle/export.dart' as pointy_castle;
 
 /// Wrapper of the pointyCastle ECPublicKey
-class CommercioECPublicKey implements CommercioPublicKey {
+class VowECPublicKey implements VowPublicKey {
   final pointy_castle.ECPublicKey pubKey;
   final String? keyType;
 
-  CommercioECPublicKey(
+  VowECPublicKey(
     this.pubKey, {
     this.keyType,
   });
@@ -23,8 +23,8 @@ class CommercioECPublicKey implements CommercioPublicKey {
 }
 
 /// Wrapper of the pointyCastle ECPrivateKey
-class CommercioECPrivateKey implements CommercioPrivateKey {
+class VowECPrivateKey implements VowPrivateKey {
   final pointy_castle.ECPrivateKey secretKey;
 
-  CommercioECPrivateKey(this.secretKey);
+  VowECPrivateKey(this.secretKey);
 }

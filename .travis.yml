@@ -32,7 +32,7 @@ jobs:
 
       script:
         - npm run doc:build
-        - echo 'dart.sdk.docs.commercio.network' > doc/.vuepress/dist/CNAME
+        - echo 'dart.sdk.docs.vowchain.net' > doc/.vuepress/dist/CNAME
 
       deploy:
         provider: pages

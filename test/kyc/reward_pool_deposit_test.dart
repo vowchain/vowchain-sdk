@@ -1,10 +1,10 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Functions of "RewardPoolDepositHelper" class', () {
     final networkInfo = NetworkInfo(
-      bech32Hrp: 'did:com:',
+      bech32Hrp: 'did:vow:',
       lcdUrl: Uri.parse(''),
     );
     const mnemonicString =

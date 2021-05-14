@@ -9,7 +9,7 @@
     ```dart
     static Future<DidDocument> fromWallet({
       required Wallet wallet,
-      required List<CommercioPublicKey> pubKeys,
+      required List<VowPublicKey> pubKeys,
       List<DidDocumentService>? service,
     })
     ```  

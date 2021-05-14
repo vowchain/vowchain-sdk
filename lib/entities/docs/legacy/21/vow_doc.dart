@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'commercio_doc.g.dart';
+part 'vow_doc.g.dart';
 
 /// Contains all the data related to a document that is sent to the chain when
 /// a user wants to share a document with another user.
 @JsonSerializable(explicitToJson: true)
-class CommercioDoc extends Equatable {
+class VowDoc extends Equatable {
   @JsonKey(name: 'sender')
   final String senderDid;
 
@@ -20,18 +20,18 @@ class CommercioDoc extends Equatable {
   final String? contentUri;
 
   @JsonKey(name: 'metadata')
-  final CommercioDocMetadata metadata;
+  final VowDocMetadata metadata;
 
   @JsonKey(name: 'checksum')
-  final CommercioDocChecksum? checksum;
+  final VowDocChecksum? checksum;
 
   @JsonKey(name: 'encryption_data')
-  final CommercioDocEncryptionData? encryptionData;
+  final VowDocEncryptionData? encryptionData;
 
   @JsonKey(name: 'do_sign')
-  final CommercioDoSign? doSign;
+  final VowDoSign? doSign;
 
-  CommercioDoc({
+  VowDoc({
     required this.senderDid,
     required this.recipientDids,
     required this.uuid,
@@ -56,14 +56,13 @@ class CommercioDoc extends Equatable {
     ];
   }
 
-  factory CommercioDoc.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocFromJson(json);
+  factory VowDoc.fromJson(Map<String, dynamic> json) => _$VowDocFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class CommercioDocMetadata extends Equatable {
+class VowDocMetadata extends Equatable {
   @JsonKey(name: 'content_uri')
   final String contentUri;
 
@@ -71,9 +70,9 @@ class CommercioDocMetadata extends Equatable {
   final String schemaType;
 
   @JsonKey(name: 'schema')
-  final CommercioDocMetadataSchema? schema;
+  final VowDocMetadataSchema? schema;
 
-  CommercioDocMetadata({
+  VowDocMetadata({
     required this.contentUri,
     this.schemaType = '',
     this.schema,
@@ -82,21 +81,21 @@ class CommercioDocMetadata extends Equatable {
   @override
   List<Object?> get props => [contentUri, schema, schemaType];
 
-  factory CommercioDocMetadata.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocMetadataFromJson(json);
+  factory VowDocMetadata.fromJson(Map<String, dynamic> json) =>
+      _$VowDocMetadataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocMetadataToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocMetadataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class CommercioDocMetadataSchema extends Equatable {
+class VowDocMetadataSchema extends Equatable {
   @JsonKey(name: 'uri')
   final String uri;
 
   @JsonKey(name: 'version')
   final String version;
 
-  const CommercioDocMetadataSchema({
+  const VowDocMetadataSchema({
     required this.uri,
     required this.version,
   });
@@ -104,21 +103,21 @@ class CommercioDocMetadataSchema extends Equatable {
   @override
   List<Object> get props => [uri, version];
 
-  factory CommercioDocMetadataSchema.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocMetadataSchemaFromJson(json);
+  factory VowDocMetadataSchema.fromJson(Map<String, dynamic> json) =>
+      _$VowDocMetadataSchemaFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocMetadataSchemaToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocMetadataSchemaToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class CommercioDocChecksum extends Equatable {
+class VowDocChecksum extends Equatable {
   @JsonKey(name: 'value')
   final String value;
 
   @JsonKey(name: 'algorithm')
-  final CommercioDocChecksumAlgorithm algorithm;
+  final VowDocChecksumAlgorithm algorithm;
 
-  const CommercioDocChecksum({
+  const VowDocChecksum({
     required this.value,
     required this.algorithm,
   });
@@ -126,13 +125,13 @@ class CommercioDocChecksum extends Equatable {
   @override
   List<Object> get props => [value, algorithm];
 
-  factory CommercioDocChecksum.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocChecksumFromJson(json);
+  factory VowDocChecksum.fromJson(Map<String, dynamic> json) =>
+      _$VowDocChecksumFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocChecksumToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocChecksumToJson(this);
 }
 
-enum CommercioDocChecksumAlgorithm {
+enum VowDocChecksumAlgorithm {
   @JsonValue('md5')
   MD5,
 
@@ -153,14 +152,14 @@ enum CommercioDocChecksumAlgorithm {
 }
 
 @JsonSerializable(explicitToJson: true)
-class CommercioDocEncryptionData extends Equatable {
+class VowDocEncryptionData extends Equatable {
   @JsonKey(name: 'keys')
-  final List<CommercioDocEncryptionDataKey> keys;
+  final List<VowDocEncryptionDataKey> keys;
 
   @JsonKey(name: 'encrypted_data')
   final List<String> encryptedData;
 
-  const CommercioDocEncryptionData({
+  const VowDocEncryptionData({
     required this.keys,
     required this.encryptedData,
   });
@@ -168,21 +167,21 @@ class CommercioDocEncryptionData extends Equatable {
   @override
   List<Object> get props => [keys, encryptedData];
 
-  factory CommercioDocEncryptionData.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocEncryptionDataFromJson(json);
+  factory VowDocEncryptionData.fromJson(Map<String, dynamic> json) =>
+      _$VowDocEncryptionDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocEncryptionDataToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocEncryptionDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class CommercioDocEncryptionDataKey extends Equatable {
+class VowDocEncryptionDataKey extends Equatable {
   @JsonKey(name: 'recipient')
   final String recipientDid;
 
   @JsonKey(name: 'value')
   final String value;
 
-  const CommercioDocEncryptionDataKey({
+  const VowDocEncryptionDataKey({
     required this.recipientDid,
     required this.value,
   });
@@ -190,14 +189,14 @@ class CommercioDocEncryptionDataKey extends Equatable {
   @override
   List<Object> get props => [recipientDid, value];
 
-  factory CommercioDocEncryptionDataKey.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocEncryptionDataKeyFromJson(json);
+  factory VowDocEncryptionDataKey.fromJson(Map<String, dynamic> json) =>
+      _$VowDocEncryptionDataKeyFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocEncryptionDataKeyToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocEncryptionDataKeyToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class CommercioDoSign extends Equatable {
+class VowDoSign extends Equatable {
   @JsonKey(name: 'storage_uri')
   final String storageUri;
 
@@ -205,7 +204,7 @@ class CommercioDoSign extends Equatable {
   final String signerIstance;
 
   @JsonKey(name: 'sdn_data')
-  final List<CommercioSdnData>? sdnData;
+  final List<VowSdnData>? sdnData;
 
   @JsonKey(name: 'vcr_id')
   final String vcrId;
@@ -213,7 +212,7 @@ class CommercioDoSign extends Equatable {
   @JsonKey(name: 'certificate_profile')
   final String certificateProfile;
 
-  const CommercioDoSign({
+  const VowDoSign({
     required this.storageUri,
     required this.signerIstance,
     required this.vcrId,
@@ -225,13 +224,13 @@ class CommercioDoSign extends Equatable {
   List<Object?> get props =>
       [storageUri, signerIstance, sdnData, vcrId, certificateProfile];
 
-  factory CommercioDoSign.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDoSignFromJson(json);
+  factory VowDoSign.fromJson(Map<String, dynamic> json) =>
+      _$VowDoSignFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDoSignToJson(this);
+  Map<String, dynamic> toJson() => _$VowDoSignToJson(this);
 }
 
-enum CommercioSdnData {
+enum VowSdnData {
   @JsonValue('common_name')
   COMMON_NAME,
 

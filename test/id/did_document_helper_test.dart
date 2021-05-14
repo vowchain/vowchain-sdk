@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:pointycastle/export.dart';
 import 'package:sacco/sacco.dart';
 import 'package:test/test.dart';
 
 void main() async {
   final networkInfo = NetworkInfo(
-    bech32Hrp: 'did:com:',
+    bech32Hrp: 'did:vow:',
     lcdUrl: Uri.parse(''),
   );
   const mnemonicString =
@@ -18,12 +18,12 @@ void main() async {
 
   final modulusVerification = BigInt.from(125);
   final exponentVerification = BigInt.from(126);
-  final rsaPubKeyVerification = CommercioRSAPublicKey(
+  final rsaPubKeyVerification = VowRSAPublicKey(
     RSAPublicKey(
       modulusVerification,
       exponentVerification,
     ),
-    keyType: CommercioRSAKeyType.verification,
+    keyType: VowRSAKeyType.verification,
   );
 
   final encodedPubKeyPem = await rsaPubKeyVerification.getEncoded();
@@ -36,12 +36,12 @@ void main() async {
 
   final modulusSignature = BigInt.from(135);
   final exponentSignature = BigInt.from(136);
-  final rsaPubKeySignature = CommercioRSAPublicKey(
+  final rsaPubKeySignature = VowRSAPublicKey(
     RSAPublicKey(
       modulusSignature,
       exponentSignature,
     ),
-    keyType: CommercioRSAKeyType.signature,
+    keyType: VowRSAKeyType.signature,
   );
 
   final signaturePubKeyEncodedPubKeyPem = await rsaPubKeySignature.getEncoded();

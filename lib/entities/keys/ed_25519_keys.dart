@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/entities/export.dart';
+import 'package:vowchainsdk/entities/export.dart';
 import 'package:cryptography/cryptography.dart';
 
 ///Wrapper of the Ed25519_hd_key
-class Ed25519PublicKey implements CommercioPublicKey {
+class Ed25519PublicKey implements VowPublicKey {
   final Uint8List seed;
   final String? keyType;
 

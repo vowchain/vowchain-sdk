@@ -17,7 +17,7 @@
         }
     },
     "application_version": {
-        "name": "commercionetwork",
+        "name": "vowchain",
         "server_name": "cnd",
         "client_name": "cndcli",
         "version": "2.1.2-1-gc3a9439d",

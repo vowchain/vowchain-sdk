@@ -1,4 +1,4 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -7,7 +7,7 @@ void main() {
 
   group('Function "calculateDefaultFee" returns expected values;', () {
     const defaultAmount = 100;
-    const defaultDenom = 'commercio';
+    const defaultDenom = 'Vow';
     const defaultGas = 200;
 
     test('if the messages number is greater than 1, the fees are multiplied.',
@@ -66,13 +66,13 @@ void main() {
     });
 
     test('Bech32 with "b", "i" or "o" after the 1 should return false', () {
-      expect(matchBech32Format('did:com:1b'), isFalse);
-      expect(matchBech32Format('did:com:1i'), isFalse);
-      expect(matchBech32Format('did:com:1o'), isFalse);
+      expect(matchBech32Format('did:vow:1b'), isFalse);
+      expect(matchBech32Format('did:vow:1i'), isFalse);
+      expect(matchBech32Format('did:vow:1o'), isFalse);
     });
 
     test('Bech32 without the "1" as separator should return false', () {
-      expect(matchBech32Format('did:com:acdefg'), isFalse);
+      expect(matchBech32Format('did:vow:acdefg'), isFalse);
     });
 
     test('Bech32 without the hrp part before "1" should return false', () {
@@ -80,9 +80,9 @@ void main() {
     });
 
     test('Valid Bech32 should return true', () {
-      expect(matchBech32Format('did:com:1acdefg'), isTrue);
+      expect(matchBech32Format('did:vow:1acdefg'), isTrue);
       expect(
-        matchBech32Format('did:com:1mfddzjvr8vpeqdtm6fuay2nvnecuk9qa8usqq5'),
+        matchBech32Format('did:vow:1mfddzjvr8vpeqdtm6fuay2nvnecuk9qa8usqq5'),
         isTrue,
       );
       expect(matchBech32Format('cosmos1acdefg'), isTrue);

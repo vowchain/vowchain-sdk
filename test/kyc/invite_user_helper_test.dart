@@ -1,10 +1,10 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Functions of "InviteUserHelper" class;', () {
     final networkInfo = NetworkInfo(
-      bech32Hrp: 'did:com:',
+      bech32Hrp: 'did:vow:',
       lcdUrl: Uri.parse(''),
     );
     const mnemonicString =
@@ -13,7 +13,7 @@ void main() {
     final wallet = Wallet.derive(mnemonic, networkInfo);
 
     test('if "fromWallet()" returns a well-formed "InviteUser" object.', () {
-      const recipientDid = 'did:com:id';
+      const recipientDid = 'did:vow:id';
 
       final expectedInviteUser = InviteUser(
         recipientDid: recipientDid,

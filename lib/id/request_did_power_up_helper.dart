@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
@@ -13,7 +13,7 @@ class RequestDidPowerUpHelper {
     required Wallet wallet,
     required String pairwiseDid,
     required List<StdCoin> amount,
-    required CommercioRSAPrivateKey privateKey,
+    required VowRSAPrivateKey privateKey,
     http.Client? client,
   }) async {
     // Get the timestamp

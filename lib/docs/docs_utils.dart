@@ -1,4 +1,4 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:convert/convert.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,14 +10,14 @@ import 'package:http/http.dart' as http;
 /// The overall encrypted data will be put inside the proper document field.
 ///
 /// Throws [ArgumentError] if:
-/// * Is provided [CommercioEncryptedData.CONTENT_URI] without a valid
+/// * Is provided [VowEncryptedData.CONTENT_URI] without a valid
 ///   [contentUri].
-/// *Is provided [CommercioEncryptedData.METADATA_SCHEMA_URI] without a
+/// *Is provided [VowEncryptedData.METADATA_SCHEMA_URI] without a
 /// [schema].
-Future<CommercioDoc> encryptField(
-  CommercioDoc doc,
+Future<VowDoc> encryptField(
+  VowDoc doc,
   Uint8List aesKey,
-  Set<CommercioEncryptedData> encryptedData,
+  Set<VowEncryptedData> encryptedData,
   List<String> recipients,
   Wallet wallet, {
   http.Client? client,
@@ -28,10 +28,10 @@ Future<CommercioDoc> encryptField(
 
   // Encrypt the contents
   String? encryptedContentUri;
-  if (encryptedData.contains(CommercioEncryptedData.CONTENT_URI)) {
+  if (encryptedData.contains(VowEncryptedData.CONTENT_URI)) {
     if (doc.contentUri == null) {
       throw ArgumentError(
-        'Document contentUri field can not be null if the encryptedData arguments contains CommercioEncryptedData.CONTENT_URI',
+        'Document contentUri field can not be null if the encryptedData arguments contains VowEncryptedData.CONTENT_URI',
       );
     }
 
@@ -41,17 +41,17 @@ Future<CommercioDoc> encryptField(
   }
 
   String? encryptedMetadataContentUri;
-  if (encryptedData.contains(CommercioEncryptedData.METADATA_CONTENT_URI)) {
+  if (encryptedData.contains(VowEncryptedData.METADATA_CONTENT_URI)) {
     encryptedMetadataContentUri = hex.encode(
       EncryptionHelper.encryptStringWithAes(doc.metadata.contentUri, aesKey),
     );
   }
 
   String? encryptedMetadataSchemaUri;
-  if (encryptedData.contains(CommercioEncryptedData.METADATA_SCHEMA_URI)) {
+  if (encryptedData.contains(VowEncryptedData.METADATA_SCHEMA_URI)) {
     if (doc.metadata.schema == null) {
       throw ArgumentError(
-        'Document metadata.schema field can not be null if the encryptedData arguments contains CommercioEncryptedData.METADATA_SCHEMA_URI',
+        'Document metadata.schema field can not be null if the encryptedData arguments contains VowEncryptedData.METADATA_SCHEMA_URI',
       );
     }
     encryptedMetadataSchemaUri = hex.encode(
@@ -83,7 +83,7 @@ Future<CommercioDoc> encryptField(
       aesKey,
       recipient.value!.encryptionKey!.publicKey,
     );
-    return CommercioDocEncryptionDataKey(
+    return VowDocEncryptionDataKey(
       recipientDid: recipient.key,
       value: hex.encode(encryptedAesKey),
     );
@@ -92,25 +92,25 @@ Future<CommercioDoc> encryptField(
   // Copy the metadata
   var metadataSchema = doc.metadata.schema;
   if (metadataSchema != null) {
-    metadataSchema = CommercioDocMetadataSchema(
+    metadataSchema = VowDocMetadataSchema(
       version: metadataSchema.version,
       uri: encryptedMetadataSchemaUri ?? metadataSchema.uri,
     );
   }
 
   // Return a copy of the document
-  return CommercioDoc(
+  return VowDoc(
     senderDid: doc.senderDid,
     recipientDids: doc.recipientDids,
     uuid: doc.uuid,
     checksum: doc.checksum,
     contentUri: encryptedContentUri ?? doc.contentUri,
-    metadata: CommercioDocMetadata(
+    metadata: VowDocMetadata(
       contentUri: encryptedMetadataContentUri ?? doc.metadata.contentUri,
       schema: metadataSchema,
       schemaType: doc.metadata.schemaType,
     ),
-    encryptionData: CommercioDocEncryptionData(
+    encryptionData: VowDocEncryptionData(
       keys: encryptionKeys,
       encryptedData: encryptedData,
     ),
@@ -120,14 +120,14 @@ Future<CommercioDoc> encryptField(
 
 class WalletIdentityNotFoundException implements Exception {
   /// Exception used to notify the caller that he tried to share an
-  /// **encrypted** [CommercioDoc] but one or more recipients does not have
+  /// **encrypted** [VowDoc] but one or more recipients does not have
   /// an associated identity.
   ///
   /// In general this exception should be instantiated with the factory
   /// constructor `fromAddress()`.
   ///
   /// Please refer to
-  /// https://docs.commercio.network/x/id/tx/create-an-identity.html
+  /// https://docs.vowchain.net/x/id/tx/create-an-identity.html
   /// on how create an identity and associate it to a wallet.
   const WalletIdentityNotFoundException(this.message);
 

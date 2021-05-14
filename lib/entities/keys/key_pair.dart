@@ -1,10 +1,9 @@
-import 'package:commerciosdk/entities/keys/asymmetric_keys.dart';
+import 'package:vowchainsdk/entities/keys/asymmetric_keys.dart';
 
 ///An asymmetric pair of public and private asymmetric keys
-class CommercioKeyPair<P extends CommercioPublicKey,
-    S extends CommercioPrivateKey> {
+class VowKeyPair<P extends VowPublicKey, S extends VowPrivateKey> {
   final P publicKey;
   final S privateKey;
 
-  CommercioKeyPair(this.publicKey, this.privateKey);
+  VowKeyPair(this.publicKey, this.privateKey);
 }

@@ -1,7 +1,7 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:sacco/sacco.dart';
 
-/// Allows to easily perform the Commercio Mint module related transactions.
+/// Allows to easily perform the Vow Mint module related transactions.
 class MintHelper {
   /// Mints the CCCs having the given [mintCccs] list as being
   /// associated with the address present inside the specified [wallet].
@@ -49,7 +49,7 @@ class MintHelper {
     Wallet wallet,
   ) async {
     final url = Uri.parse(
-      '${wallet.networkInfo.lcdUrl}/commerciomint/etps/${wallet.bech32Address}',
+      '${wallet.networkInfo.lcdUrl}/Vowmint/etps/${wallet.bech32Address}',
     );
     final response = await Network.queryChain(url) as List;
     return response

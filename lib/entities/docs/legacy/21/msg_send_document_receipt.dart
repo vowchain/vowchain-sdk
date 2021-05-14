@@ -1,16 +1,14 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 
-import 'commercio_doc_receipt.dart' as legacy;
+import 'vow_doc_receipt.dart' as legacy;
 
 /// Message that should be used when wanting to send a document
 /// receipt transaction.
 class MsgSendDocumentReceipt extends StdMsg {
-  final legacy.CommercioDocReceipt receipt;
+  final legacy.VowDocReceipt receipt;
 
   MsgSendDocumentReceipt({required this.receipt})
-      : super(
-            type: 'commercio/MsgSendDocumentReceipt',
-            value: <String, String>{});
+      : super(type: 'Vow/MsgSendDocumentReceipt', value: <String, String>{});
 
   @override
   Map<String, dynamic> get value => receipt.toJson();

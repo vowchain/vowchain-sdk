@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:commerciosdk/entities/crypto/identity_response.dart';
-import 'package:commerciosdk/entities/crypto/tumbler_response.dart';
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/entities/crypto/identity_response.dart';
+import 'package:vowchainsdk/entities/crypto/tumbler_response.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:http/http.dart' as http;
 import 'package:pointycastle/export.dart';
 import 'package:pointycastle/api.dart';
@@ -13,7 +13,7 @@ import 'package:pointycastle/api.dart';
 class EncryptionHelper {
   /// encrypting the data that only it should see.
   /// Returns the RSA public key associated to the government that should be used when
-  static Future<CommercioRSAPublicKey> getGovernmentRsaPubKey(
+  static Future<VowRSAPublicKey> getGovernmentRsaPubKey(
     Uri lcdUrl, {
     http.Client? client,
   }) async {
@@ -49,9 +49,9 @@ class EncryptionHelper {
     final rsaPublicKey =
         RSAKeyParser.parseFromPem(didPubKey.publicKeyPem) as RSAPublicKey;
 
-    return CommercioRSAPublicKey(
+    return VowRSAPublicKey(
       rsaPublicKey,
-      keyType: CommercioRSAKeyType.verification,
+      keyType: VowRSAKeyType.verification,
     );
   }
 

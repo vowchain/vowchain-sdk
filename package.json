@@ -1,7 +1,7 @@
 {
   "name": "docs",
-  "version": "2.2.0",
-  "description": "Commercio.network SDK (Dart) documentation",
+  "version": "1.1.0",
+  "description": "Vow Chain SDK (Dart) documentation",
   "main": "index.js",
   "scripts": {
     "doc:serve": "vuepress dev doc",

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/crypto/export.dart';
+import 'package:vowchainsdk/crypto/export.dart';
 import 'package:equatable/equatable.dart';
 
 /// Contains the data that is returned from the [generateProof] method.

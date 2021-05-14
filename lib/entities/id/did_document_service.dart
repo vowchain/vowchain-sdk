@@ -1,4 +1,4 @@
-import 'package:commerciosdk/utils/utils.dart';
+import 'package:vowchainsdk/utils/utils.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 

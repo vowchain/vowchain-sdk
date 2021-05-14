@@ -1,4 +1,4 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 
 /// Represents the transaction message that must be used when wanting to buy a membership.
 class MsgBuyMembership extends StdMsg {
@@ -6,7 +6,7 @@ class MsgBuyMembership extends StdMsg {
 
   MsgBuyMembership({
     required this.buyMembership,
-  }) : super(type: 'commercio/MsgBuyMembership', value: <String, String>{});
+  }) : super(type: 'Vow/MsgBuyMembership', value: <String, String>{});
 
   @override
   Map<String, dynamic> get value => buyMembership.toJson();

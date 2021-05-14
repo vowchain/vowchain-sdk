@@ -1,10 +1,10 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Functions of "BuyMembershipHelper" class;', () {
     final networkInfo = NetworkInfo(
-      bech32Hrp: 'did:com:',
+      bech32Hrp: 'did:vow:',
       lcdUrl: Uri.parse(''),
     );
     const mnemonicString =
@@ -14,7 +14,7 @@ void main() {
 
     test('if "fromWallet()" returns a well-formed "BuyMembership" object.', () {
       final membershipType = MembershipType.BLACK.value;
-      const tsp = 'did:com:id';
+      const tsp = 'did:vow:id';
 
       final expectedBuyMembership = BuyMembership(
         membershipType: membershipType,

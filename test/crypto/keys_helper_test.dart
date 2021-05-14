@@ -1,16 +1,15 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/crypto/export.dart';
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/crypto/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:test/test.dart';
 
 void main() {
   test('generateRsaKeyPair generates random keys', () async {
-    final keys =
-        <CommercioKeyPair<CommercioRSAPublicKey, CommercioRSAPrivateKey>>[];
+    final keys = <VowKeyPair<VowRSAPublicKey, VowRSAPrivateKey>>[];
     for (var i = 0; i < 10; i++) {
       keys.add(await KeysHelper.generateRsaKeyPair(
-        keyType: CommercioRSAKeyType.verification,
+        keyType: VowRSAKeyType.verification,
       ));
     }
 

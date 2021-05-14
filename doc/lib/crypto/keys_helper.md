@@ -9,8 +9,8 @@ Below you can find the keys helper's provided operations with some examples
 1. Generates **RSA** key pair having the given bytes length and type. If no length is specified, the default is goin to be 2048
 
     ```dart
-    static Future<CommercioKeyPair<CommercioRSAPublicKey, CommercioRSAPrivateKey>> generateRsaKeyPair({
-        required CommercioRSAKeyType keyType,
+    static Future<VowKeyPair<VowRSAPublicKey, VowRSAPrivateKey>> generateRsaKeyPair({
+        required VowRSAKeyType keyType,
         int bytes = 2048,
     })
     ```
@@ -30,5 +30,5 @@ Below you can find the keys helper's provided operations with some examples
 4. Generates a new random **EC** key pair
 
     ```dart
-    static Future<CommercioKeyPair<CommercioECPublicKey, CommercioECPrivateKey>> generateEcKeyPair({String? type})
+    static Future<VowKeyPair<VowECPublicKey, VowECPrivateKey>> generateEcKeyPair({String? type})
     ```

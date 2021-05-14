@@ -1,4 +1,4 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 
 /// Represents the transaction message that must be used when wanting to
 /// invite a new user to join the system and being recognized as his invitee.
@@ -10,7 +10,7 @@ class MsgInviteUser extends StdMsg {
 
   MsgInviteUser({
     required this.inviteUser,
-  }) : super(type: 'commercio/MsgInviteUser', value: <String, String>{});
+  }) : super(type: 'Vow/MsgInviteUser', value: <String, String>{});
 
   @override
   Map<String, dynamic> get value => inviteUser.toJson();

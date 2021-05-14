@@ -1,4 +1,4 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 
 /// Allows to easily create an InviteUser and perform common related operations
 class InviteUserHelper {

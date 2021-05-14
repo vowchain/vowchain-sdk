@@ -7,17 +7,17 @@
         },
         "id": "b9a5b42aba9d5b962a4a9d478d364e9614f17b63",
         "listen_addr": "tcp://0.0.0.0:26656",
-        "network": "commercio-devnet07",
+        "network": "Vow-devnet07",
         "version": "0.33.9",
         "channels": "4020212223303800",
-        "moniker": "commercio-testnet-int-demo00",
+        "moniker": "Vow-testnet-int-demo00",
         "other": {
             "tx_index": "on",
             "rpc_address": "tcp://0.0.0.0:26657"
         }
     },
     "application_version": {
-        "name": "commercionetwork",
+        "name": "vowchain",
         "server_name": "cnd",
         "client_name": "cndcli",
         "version": "2.2.0-pre.2",

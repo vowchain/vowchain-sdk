@@ -1,6 +1,6 @@
 # IdHelper
 
-`IdHelper` allows to easily perform all the operations related to the commercio.network `id` module.
+`IdHelper` allows to easily perform all the operations related to the Vow Chain `id` module.
 
 ## Provided operations
 
@@ -45,7 +45,7 @@
       Wallet senderWallet,
       String pairwiseDid,
       List<StdCoin> amount,
-      CommercioRSAPrivateKey privateKey, {
+      VowRSAPrivateKey privateKey, {
       StdFee? fee,
       BroadcastingMode? mode,
     })
@@ -66,7 +66,7 @@
 
 ```dart
 final networkInfo = NetworkInfo(
-  bech32Hrp: 'did:com:',
+  bech32Hrp: 'did:vow:',
   lcdUrl: 'http://localhost:1317',
 );
 final mnemonic = ['will', 'hard', ..., 'man'];

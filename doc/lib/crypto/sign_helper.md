@@ -19,6 +19,6 @@ Below you can find the sign helper's provided operations with some examples
       required String senderDid,
       required String pairwiseDid,
       required String timestamp,
-      required CommercioRSAPrivateKey rsaPrivateKey,
+      required VowRSAPrivateKey rsaPrivateKey,
     })
     ```

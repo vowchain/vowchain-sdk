@@ -1,8 +1,8 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:http/http.dart' as http;
 import 'package:sacco/sacco.dart';
 
-/// Allows to perform common operations related to CommercioID.
+/// Allows to perform common operations related to VowID.
 class IdHelper {
   /// Returns the Did Document associated with the given [did],
   /// or `null` if no Did Document was found.
@@ -72,7 +72,7 @@ class IdHelper {
     Wallet senderWallet,
     String pairwiseDid,
     List<StdCoin> amount,
-    CommercioRSAPrivateKey privateKey, {
+    VowRSAPrivateKey privateKey, {
     StdFee? fee,
     BroadcastingMode? mode,
   }) async {

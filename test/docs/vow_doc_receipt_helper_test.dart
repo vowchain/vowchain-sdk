@@ -1,11 +1,11 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
 void main() {
-  group('Functions of "CommercioDoReceiptHelper" class;', () {
+  group('Functions of "VowDoReceiptHelper" class;', () {
     final networkInfo = NetworkInfo(
-      bech32Hrp: 'did:com:',
+      bech32Hrp: 'did:vow:',
       lcdUrl: Uri.parse(''),
     );
     const mnemonicString =
@@ -14,13 +14,12 @@ void main() {
     final wallet = Wallet.derive(mnemonic, networkInfo);
 
     final uuid = const Uuid().v4();
-    const recipientDid = 'did:com:14ttg3eyu88jda8udvxpwjl2pwxemh72w0grsau';
+    const recipientDid = 'did:vow:14ttg3eyu88jda8udvxpwjl2pwxemh72w0grsau';
     const txHash = 'txHash';
     final documentId = const Uuid().v4();
 
-    test('"fromWallet()" returns a well-formed "CommercioDocReceipt" object.',
-        () {
-      final expectedDocReceipt = CommercioDocReceipt(
+    test('"fromWallet()" returns a well-formed "VowDocReceipt" object.', () {
+      final expectedDocReceipt = VowDocReceipt(
         uuid: uuid,
         senderDid: wallet.bech32Address,
         recipientDid: recipientDid,
@@ -28,24 +27,24 @@ void main() {
         documentUuid: documentId,
       );
 
-      final commercioDocReceipt = CommercioDocReceiptHelper.fromWallet(
+      final vowDocReceipt = VowDocReceiptHelper.fromWallet(
         wallet: wallet,
         recipient: recipientDid,
         txHash: txHash,
         documentId: documentId,
       );
 
-      expect(commercioDocReceipt.uuid, isNot(expectedDocReceipt.uuid));
-      expect(commercioDocReceipt.senderDid, expectedDocReceipt.senderDid);
-      expect(commercioDocReceipt.recipientDid, expectedDocReceipt.recipientDid);
-      expect(commercioDocReceipt.txHash, expectedDocReceipt.txHash);
-      expect(commercioDocReceipt.documentUuid, expectedDocReceipt.documentUuid);
-      expect(commercioDocReceipt.proof, isNull);
+      expect(vowDocReceipt.uuid, isNot(expectedDocReceipt.uuid));
+      expect(vowDocReceipt.senderDid, expectedDocReceipt.senderDid);
+      expect(vowDocReceipt.recipientDid, expectedDocReceipt.recipientDid);
+      expect(vowDocReceipt.txHash, expectedDocReceipt.txHash);
+      expect(vowDocReceipt.documentUuid, expectedDocReceipt.documentUuid);
+      expect(vowDocReceipt.proof, isNull);
     });
 
     test('Invalid sender bech32 format should throw an assertion error', () {
       expect(
-        () => CommercioDocReceiptHelper.fromWallet(
+        () => VowDocReceiptHelper.fromWallet(
           wallet: wallet,
           recipient: 'invalid bech32',
           txHash: txHash,
@@ -59,7 +58,7 @@ void main() {
         'Invalid document uuid (not v4) format should throw an assertion error',
         () {
       expect(
-        () => CommercioDocReceiptHelper.fromWallet(
+        () => VowDocReceiptHelper.fromWallet(
           wallet: wallet,
           recipient: recipientDid,
           txHash: txHash,

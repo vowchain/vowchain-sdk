@@ -1,6 +1,6 @@
 import 'package:sacco/sacco.dart';
 import 'package:uuid/uuid.dart';
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 
 Future<void> main() async {
   // --------------------------------------------
@@ -9,7 +9,7 @@ Future<void> main() async {
 
   final lcdUrl = Uri.parse('http://localhost:1337');
   final networkInfo = NetworkInfo(
-    bech32Hrp: 'did:com:',
+    bech32Hrp: 'did:vow:',
     lcdUrl: lcdUrl,
   );
 
@@ -28,16 +28,16 @@ Future<void> main() async {
   // blockchain the [wallet] requires some tokens, for example given from the
   // tumbler or from another wallet.
   //
-  // See https://docs.commercio.network/developers/create-sign-broadcast-tx.html
+  // See https://docs.vowchain.net/developers/create-sign-broadcast-tx.html
   // to send tokens.
 
   final rsaVerificationKeyPair = await KeysHelper.generateRsaKeyPair(
-    keyType: CommercioRSAKeyType.verification,
+    keyType: VowRSAKeyType.verification,
   );
   final rsaVerificationPubKey = rsaVerificationKeyPair.publicKey;
 
   final rsaSignatureKeyPair = await KeysHelper.generateRsaKeyPair(
-    keyType: CommercioRSAKeyType.signature,
+    keyType: VowRSAKeyType.signature,
   );
   final rsaSignaturePubKey = rsaSignatureKeyPair.publicKey;
 
@@ -82,9 +82,9 @@ Future<void> main() async {
   final docRecipientDid = recipientWallet.bech32Address;
   final docId = const Uuid().v4();
 
-  final checksum = CommercioDocChecksum(
+  final checksum = VowDocChecksum(
     value: 'a00ab326fc8a3dd93ec84f7e7773ac2499b381c4833e53110107f21c3b90509c',
-    algorithm: CommercioDocChecksumAlgorithm.SHA256,
+    algorithm: VowDocChecksumAlgorithm.SHA256,
   );
 
   // Note that to perform a DoSign on the document that [senderWallet] would
@@ -93,27 +93,27 @@ Future<void> main() async {
   // The steps needed to set an identity are described in
   // "Creating setIdentity transaction".
   //
-  // See https://docs.commercio.network/x/id/tx/create-an-identity.html
+  // See https://docs.vowchain.net/x/id/tx/create-an-identity.html
 
-  final doSign = CommercioDoSign(
-    storageUri: 'http://www.commercio.network',
-    signerIstance: 'did:com:1cc65t29yuwuc32ep2h9uqhnwrregfq230lf2rj',
+  final doSign = VowDoSign(
+    storageUri: 'http://vowchain.net',
+    signerIstance: 'did:vow:1cc65t29yuwuc32ep2h9uqhnwrregfq230lf2rj',
     sdnData: const {
-      CommercioSdnData.COMMON_NAME,
-      CommercioSdnData.SURNAME,
+      VowSdnData.COMMON_NAME,
+      VowSdnData.SURNAME,
     },
     vcrId: 'xxxxx',
     certificateProfile: 'xxxxx',
   );
 
   try {
-    final commercioDoc = await CommercioDocHelper.fromWallet(
+    final VowDoc = await VowDocHelper.fromWallet(
       wallet: senderWallet,
       recipients: [docRecipientDid],
       id: docId,
-      metadata: CommercioDocMetadata(
+      metadata: VowDocMetadata(
         contentUri: 'https://example.com/document/metadata',
-        schema: CommercioDocMetadataSchema(
+        schema: VowDocMetadataSchema(
           uri: 'https://example.com/custom/metadata/schema',
           version: '7.0.0',
         ),
@@ -121,10 +121,10 @@ Future<void> main() async {
       contentUri: 'https://example.com/document',
       checksum: checksum,
       doSign: doSign,
-      encryptedData: {CommercioEncryptedData.CONTENT_URI},
+      encryptedData: {VowEncryptedData.CONTENT_URI},
     );
     final response = await DocsHelper.shareDocumentsList(
-      [commercioDoc],
+      [VowDoc],
       senderWallet,
     );
 

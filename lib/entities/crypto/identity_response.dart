@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/entities/id/did_document.dart';
+import 'package:vowchainsdk/entities/id/did_document.dart';
 
 class IdentityResponse {
   final String height;

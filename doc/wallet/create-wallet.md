@@ -6,14 +6,14 @@ From wikipedia:
 
 In our case the wallet will be used to sign
 (with the keys contained in it) the transactions that will
-then be sended to the Commercio.network blockchain.
+then be sended to the Vow Chain blockchain.
   
 ## Create a Wallet
 
-Before doing anything with the tools offered by Commercio.network SDK you **must** create a wallet as follow:
+Before doing anything with the tools offered by Vow Chain SDK you **must** create a wallet as follow:
 
 ```dart
-final networkInfo = NetworkInfo(bech32Hrp: 'did:com:', lcdUrl: 'http://localhost:1317');
+final networkInfo = NetworkInfo(bech32Hrp: 'did:vow:', lcdUrl: 'http://localhost:1317');
 
 final mnemonicString = 'final random flame cinnamon grunt hazard easily mutual resist pond solution define knife female tongue crime atom jaguar alert library best forum lesson rigid';
 final mnemonic = mnemonicString.split(' ');

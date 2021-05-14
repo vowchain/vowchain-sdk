@@ -1,11 +1,11 @@
-import 'package:commerciosdk/export.dart';
-import 'package:commerciosdk/mint/export.dart';
+import 'package:vowchainsdk/export.dart';
+import 'package:vowchainsdk/mint/export.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Functions of "MintCccHelper" class', () {
     final networkInfo = NetworkInfo(
-      bech32Hrp: 'did:com:',
+      bech32Hrp: 'did:vow:',
       lcdUrl: Uri.parse(''),
     );
     const mnemonicString =

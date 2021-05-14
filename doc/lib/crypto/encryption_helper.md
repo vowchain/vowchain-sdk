@@ -51,7 +51,7 @@ Below you can find the encryption helper's provided operations with some example
 8. Returns the RSA Public key associated to the government that should be used when encrypting the data that only it should see
 
     ```dart
-    static Future<CommercioRSAPublicKey> getGovernmentRsaPubKey(
+    static Future<VowRSAPublicKey> getGovernmentRsaPubKey(
         Uri lcdUrl, {
         http.Client? client,
     })

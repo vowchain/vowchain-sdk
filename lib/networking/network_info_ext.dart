@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:http/http.dart' as http;
 
 extension NetworkInfoExt on NetworkInfo {

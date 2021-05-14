@@ -1,12 +1,12 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pointycastle/export.dart';
 
 part 'did_document.g.dart';
 
-/// Commercio network's did document is described here:
-/// https://scw-gitlab.zotsell.com/Commercio.network/Cosmos-application/blob/master/Commercio%20Decentralized%20ID%20framework.md
+/// Vow network's did document is described here:
+/// https://scw-gitlab.zotsell.com/Vow Chain/Cosmos-application/blob/master/Vow%20Decentralized%20ID%20framework.md
 @JsonSerializable(explicitToJson: true)
 class DidDocument extends Equatable {
   @JsonKey(name: '@context')
@@ -40,9 +40,9 @@ class DidDocument extends Equatable {
   /// Returns the [PublicKey] that should be used as the public encryption
   /// key when encrypting data that can later be read only by the owner of
   /// this Did Document.
-  CommercioRSAPublicKey? get encryptionKey {
+  VowRSAPublicKey? get encryptionKey {
     final pubKey = publicKeys.firstWhere(
-      (key) => key?.type == CommercioRSAKeyType.verification.value,
+      (key) => key?.type == VowRSAKeyType.verification.value,
       orElse: () => null,
     );
 
@@ -50,9 +50,9 @@ class DidDocument extends Equatable {
       return null;
     }
 
-    return CommercioRSAPublicKey(
+    return VowRSAPublicKey(
       RSAKeyParser.parseFromPem(pubKey.publicKeyPem) as RSAPublicKey,
-      keyType: CommercioRSAKeyType.verification,
+      keyType: VowRSAKeyType.verification,
     );
   }
 

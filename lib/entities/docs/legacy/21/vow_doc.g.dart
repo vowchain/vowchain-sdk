@@ -1,36 +1,33 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'commercio_doc.dart';
+part of 'vow_doc.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CommercioDoc _$CommercioDocFromJson(Map<String, dynamic> json) {
-  return CommercioDoc(
+VowDoc _$VowDocFromJson(Map<String, dynamic> json) {
+  return VowDoc(
     senderDid: json['sender'] as String,
     recipientDids:
         (json['recipients'] as List<dynamic>).map((e) => e as String).toList(),
     uuid: json['uuid'] as String,
-    metadata:
-        CommercioDocMetadata.fromJson(json['metadata'] as Map<String, dynamic>),
+    metadata: VowDocMetadata.fromJson(json['metadata'] as Map<String, dynamic>),
     contentUri: json['content_uri'] as String?,
     checksum: json['checksum'] == null
         ? null
-        : CommercioDocChecksum.fromJson(
-            json['checksum'] as Map<String, dynamic>),
+        : VowDocChecksum.fromJson(json['checksum'] as Map<String, dynamic>),
     encryptionData: json['encryption_data'] == null
         ? null
-        : CommercioDocEncryptionData.fromJson(
+        : VowDocEncryptionData.fromJson(
             json['encryption_data'] as Map<String, dynamic>),
     doSign: json['do_sign'] == null
         ? null
-        : CommercioDoSign.fromJson(json['do_sign'] as Map<String, dynamic>),
+        : VowDoSign.fromJson(json['do_sign'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$CommercioDocToJson(CommercioDoc instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$VowDocToJson(VowDoc instance) => <String, dynamic>{
       'sender': instance.senderDid,
       'recipients': instance.recipientDids,
       'uuid': instance.uuid,
@@ -41,53 +38,49 @@ Map<String, dynamic> _$CommercioDocToJson(CommercioDoc instance) =>
       'do_sign': instance.doSign?.toJson(),
     };
 
-CommercioDocMetadata _$CommercioDocMetadataFromJson(Map<String, dynamic> json) {
-  return CommercioDocMetadata(
+VowDocMetadata _$VowDocMetadataFromJson(Map<String, dynamic> json) {
+  return VowDocMetadata(
     contentUri: json['content_uri'] as String,
     schemaType: json['schema_type'] as String,
     schema: json['schema'] == null
         ? null
-        : CommercioDocMetadataSchema.fromJson(
-            json['schema'] as Map<String, dynamic>),
+        : VowDocMetadataSchema.fromJson(json['schema'] as Map<String, dynamic>),
   );
 }
 
-Map<String, dynamic> _$CommercioDocMetadataToJson(
-        CommercioDocMetadata instance) =>
+Map<String, dynamic> _$VowDocMetadataToJson(VowDocMetadata instance) =>
     <String, dynamic>{
       'content_uri': instance.contentUri,
       'schema_type': instance.schemaType,
       'schema': instance.schema?.toJson(),
     };
 
-CommercioDocMetadataSchema _$CommercioDocMetadataSchemaFromJson(
-    Map<String, dynamic> json) {
-  return CommercioDocMetadataSchema(
+VowDocMetadataSchema _$VowDocMetadataSchemaFromJson(Map<String, dynamic> json) {
+  return VowDocMetadataSchema(
     uri: json['uri'] as String,
     version: json['version'] as String,
   );
 }
 
-Map<String, dynamic> _$CommercioDocMetadataSchemaToJson(
-        CommercioDocMetadataSchema instance) =>
+Map<String, dynamic> _$VowDocMetadataSchemaToJson(
+        VowDocMetadataSchema instance) =>
     <String, dynamic>{
       'uri': instance.uri,
       'version': instance.version,
     };
 
-CommercioDocChecksum _$CommercioDocChecksumFromJson(Map<String, dynamic> json) {
-  return CommercioDocChecksum(
+VowDocChecksum _$VowDocChecksumFromJson(Map<String, dynamic> json) {
+  return VowDocChecksum(
     value: json['value'] as String,
     algorithm:
-        _$enumDecode(_$CommercioDocChecksumAlgorithmEnumMap, json['algorithm']),
+        _$enumDecode(_$VowDocChecksumAlgorithmEnumMap, json['algorithm']),
   );
 }
 
-Map<String, dynamic> _$CommercioDocChecksumToJson(
-        CommercioDocChecksum instance) =>
+Map<String, dynamic> _$VowDocChecksumToJson(VowDocChecksum instance) =>
     <String, dynamic>{
       'value': instance.value,
-      'algorithm': _$CommercioDocChecksumAlgorithmEnumMap[instance.algorithm],
+      'algorithm': _$VowDocChecksumAlgorithmEnumMap[instance.algorithm],
     };
 
 K _$enumDecode<K, V>(
@@ -116,21 +109,19 @@ K _$enumDecode<K, V>(
   ).key;
 }
 
-const _$CommercioDocChecksumAlgorithmEnumMap = {
-  CommercioDocChecksumAlgorithm.MD5: 'md5',
-  CommercioDocChecksumAlgorithm.SHA1: 'sha-1',
-  CommercioDocChecksumAlgorithm.SHA224: 'sha-224',
-  CommercioDocChecksumAlgorithm.SHA256: 'sha-256',
-  CommercioDocChecksumAlgorithm.SHA384: 'sha-384',
-  CommercioDocChecksumAlgorithm.SHA512: 'sha-512',
+const _$VowDocChecksumAlgorithmEnumMap = {
+  VowDocChecksumAlgorithm.MD5: 'md5',
+  VowDocChecksumAlgorithm.SHA1: 'sha-1',
+  VowDocChecksumAlgorithm.SHA224: 'sha-224',
+  VowDocChecksumAlgorithm.SHA256: 'sha-256',
+  VowDocChecksumAlgorithm.SHA384: 'sha-384',
+  VowDocChecksumAlgorithm.SHA512: 'sha-512',
 };
 
-CommercioDocEncryptionData _$CommercioDocEncryptionDataFromJson(
-    Map<String, dynamic> json) {
-  return CommercioDocEncryptionData(
+VowDocEncryptionData _$VowDocEncryptionDataFromJson(Map<String, dynamic> json) {
+  return VowDocEncryptionData(
     keys: (json['keys'] as List<dynamic>)
-        .map((e) =>
-            CommercioDocEncryptionDataKey.fromJson(e as Map<String, dynamic>))
+        .map((e) => VowDocEncryptionDataKey.fromJson(e as Map<String, dynamic>))
         .toList(),
     encryptedData: (json['encrypted_data'] as List<dynamic>)
         .map((e) => e as String)
@@ -138,55 +129,53 @@ CommercioDocEncryptionData _$CommercioDocEncryptionDataFromJson(
   );
 }
 
-Map<String, dynamic> _$CommercioDocEncryptionDataToJson(
-        CommercioDocEncryptionData instance) =>
+Map<String, dynamic> _$VowDocEncryptionDataToJson(
+        VowDocEncryptionData instance) =>
     <String, dynamic>{
       'keys': instance.keys.map((e) => e.toJson()).toList(),
       'encrypted_data': instance.encryptedData,
     };
 
-CommercioDocEncryptionDataKey _$CommercioDocEncryptionDataKeyFromJson(
+VowDocEncryptionDataKey _$VowDocEncryptionDataKeyFromJson(
     Map<String, dynamic> json) {
-  return CommercioDocEncryptionDataKey(
+  return VowDocEncryptionDataKey(
     recipientDid: json['recipient'] as String,
     value: json['value'] as String,
   );
 }
 
-Map<String, dynamic> _$CommercioDocEncryptionDataKeyToJson(
-        CommercioDocEncryptionDataKey instance) =>
+Map<String, dynamic> _$VowDocEncryptionDataKeyToJson(
+        VowDocEncryptionDataKey instance) =>
     <String, dynamic>{
       'recipient': instance.recipientDid,
       'value': instance.value,
     };
 
-CommercioDoSign _$CommercioDoSignFromJson(Map<String, dynamic> json) {
-  return CommercioDoSign(
+VowDoSign _$VowDoSignFromJson(Map<String, dynamic> json) {
+  return VowDoSign(
     storageUri: json['storage_uri'] as String,
     signerIstance: json['signer_instance'] as String,
     vcrId: json['vcr_id'] as String,
     certificateProfile: json['certificate_profile'] as String,
     sdnData: (json['sdn_data'] as List<dynamic>?)
-        ?.map((e) => _$enumDecode(_$CommercioSdnDataEnumMap, e))
+        ?.map((e) => _$enumDecode(_$VowSdnDataEnumMap, e))
         .toList(),
   );
 }
 
-Map<String, dynamic> _$CommercioDoSignToJson(CommercioDoSign instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$VowDoSignToJson(VowDoSign instance) => <String, dynamic>{
       'storage_uri': instance.storageUri,
       'signer_instance': instance.signerIstance,
-      'sdn_data':
-          instance.sdnData?.map((e) => _$CommercioSdnDataEnumMap[e]).toList(),
+      'sdn_data': instance.sdnData?.map((e) => _$VowSdnDataEnumMap[e]).toList(),
       'vcr_id': instance.vcrId,
       'certificate_profile': instance.certificateProfile,
     };
 
-const _$CommercioSdnDataEnumMap = {
-  CommercioSdnData.COMMON_NAME: 'common_name',
-  CommercioSdnData.SURNAME: 'surname',
-  CommercioSdnData.SERIAL_NUMBER: 'serial_number',
-  CommercioSdnData.GIVEN_NAME: 'given_name',
-  CommercioSdnData.ORGANIZATION: 'organization',
-  CommercioSdnData.COUNTRY: 'country',
+const _$VowSdnDataEnumMap = {
+  VowSdnData.COMMON_NAME: 'common_name',
+  VowSdnData.SURNAME: 'surname',
+  VowSdnData.SERIAL_NUMBER: 'serial_number',
+  VowSdnData.GIVEN_NAME: 'given_name',
+  VowSdnData.ORGANIZATION: 'organization',
+  VowSdnData.COUNTRY: 'country',
 };

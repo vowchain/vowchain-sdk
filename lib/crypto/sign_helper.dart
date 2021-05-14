@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:commerciosdk/entities/export.dart';
-import 'package:commerciosdk/entities/keys/rsa_keys.dart';
+import 'package:vowchainsdk/entities/export.dart';
+import 'package:vowchainsdk/entities/keys/rsa_keys.dart';
 import 'package:pointycastle/export.dart';
 import 'package:sacco/sacco.dart';
 import 'package:sacco/utils/export.dart';
@@ -26,7 +26,7 @@ class SignHelper {
     required String senderDid,
     required String pairwiseDid,
     required String timestamp,
-    required CommercioRSAPrivateKey rsaPrivateKey,
+    required VowRSAPrivateKey rsaPrivateKey,
   }) {
     final concat = senderDid + pairwiseDid + timestamp;
 

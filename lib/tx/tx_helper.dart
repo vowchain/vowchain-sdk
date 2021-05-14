@@ -1,11 +1,11 @@
-import 'package:commerciosdk/utils/utils.dart';
+import 'package:vowchainsdk/utils/utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:sacco/sacco.dart';
 
 /// Allows to easily perform common transaction operations.
 class TxHelper {
   static const defaultAmount = 10000;
-  static const defaultDenom = 'ucommercio';
+  static const defaultDenom = 'uvow';
   static const defaultGas = 200000;
 
   /// Creates a transaction having the given [msgs],

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:convert/convert.dart';
 import 'package:test/test.dart';
 
@@ -36,7 +36,7 @@ void main() {
 
   test('RSA encryption and decryption work properly with String', () async {
     final keyPair = await KeysHelper.generateRsaKeyPair(
-      keyType: CommercioRSAKeyType.verification,
+      keyType: VowRSAKeyType.verification,
     );
     const input = 'This is a test!';
     final encrypted = EncryptionHelper.encryptStringWithRsa(
@@ -52,7 +52,7 @@ void main() {
 
   test('RSA encryption and decryption work properly with byte array', () async {
     final keyPair = await KeysHelper.generateRsaKeyPair(
-      keyType: CommercioRSAKeyType.verification,
+      keyType: VowRSAKeyType.verification,
     );
     const input =
         'Long text for RSA encryption and decryption that should be read as a ByteArray';

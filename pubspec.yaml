@@ -1,8 +1,8 @@
-name: commerciosdk
-description: Pure Dart library allowing you to easily integrate with the Commercio.network blockchain
-version: 2.2.0
-homepage: https://github.com/commercionetwork/sdk.dart
-documentation: https://dart.sdk.docs.commercio.network
+name: vowchainsdk
+description: Pure Dart library allowing you to easily integrate with the vow chain
+version: 1.1.0
+homepage: https://github.com/vowchain/vowchain-sdk
+documentation: https://vowchain.net
 
 environment:
   sdk: ">=2.12.0-0 <3.0.0"

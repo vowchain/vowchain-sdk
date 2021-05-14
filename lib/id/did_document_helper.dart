@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:sacco/sacco.dart';
 
 /// Allows to easily create a Did Document and perform common related operations
@@ -8,7 +8,7 @@ class DidDocumentHelper {
   /// Creates a Did Document from the given [wallet], [pubKeys] and optional [service].
   static Future<DidDocument> fromWallet({
     required Wallet wallet,
-    required List<CommercioPublicKey> pubKeys,
+    required List<VowPublicKey> pubKeys,
     List<DidDocumentService>? service,
   }) async {
     if (pubKeys.length < 2) {
@@ -49,7 +49,7 @@ class DidDocumentHelper {
   /// Converts the given [pubKey] into a [DidDocumentPublicKey] placed at position [index],
   /// [wallet] used to get the controller field of each [DidDocumentPublicKey].
   static Future<DidDocumentPublicKey> _convertKey(
-    CommercioPublicKey pubKey,
+    VowPublicKey pubKey,
     int index,
     Wallet wallet,
   ) async {

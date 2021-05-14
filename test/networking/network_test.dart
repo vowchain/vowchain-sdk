@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -11,7 +11,7 @@ part 'network_test.g.dart';
 void main() {
   final testData = [
     TestData(
-      'did:com:1zfhgwfgex8rc9t00pk6jm6xj6vx5cjr4ngy32v',
+      'did:vow:1zfhgwfgex8rc9t00pk6jm6xj6vx5cjr4ngy32v',
       '6a881ef0-04da-4524-b7ca-6e5e3b7e61dc',
     ),
   ];
@@ -31,7 +31,7 @@ void main() {
     final testDataList = result.map((json) => TestData.fromJson(json)).toList();
     expect(testDataList.length, 1);
     expect(
-      'did:com:1zfhgwfgex8rc9t00pk6jm6xj6vx5cjr4ngy32v',
+      'did:vow:1zfhgwfgex8rc9t00pk6jm6xj6vx5cjr4ngy32v',
       testDataList[0].sender,
     );
     expect('6a881ef0-04da-4524-b7ca-6e5e3b7e61dc', testDataList[0].uuid);

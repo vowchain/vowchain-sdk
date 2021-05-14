@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:pointycastle/export.dart';
 
 /// Allows to easily generate new keys either to be used with AES or RSA key.
@@ -29,9 +29,9 @@ class KeysHelper {
 
   /// Generates a new RSA key pair having the given [bytes] length.
   /// If no length is specified, the default is going to be 2048.
-  static Future<CommercioKeyPair<CommercioRSAPublicKey, CommercioRSAPrivateKey>>
+  static Future<VowKeyPair<VowRSAPublicKey, VowRSAPrivateKey>>
       generateRsaKeyPair({
-    required CommercioRSAKeyType keyType,
+    required VowRSAKeyType keyType,
     int bytes = 2048,
   }) async {
     final rsa = RSAKeyGeneratorParameters(BigInt.from(65537), bytes, 5);
@@ -40,25 +40,25 @@ class KeysHelper {
     keyGenerator.init(params);
     final keyPair = keyGenerator.generateKeyPair();
 
-    return CommercioKeyPair(
-      CommercioRSAPublicKey(
+    return VowKeyPair(
+      VowRSAPublicKey(
         keyPair.publicKey as RSAPublicKey,
         keyType: keyType,
       ),
-      CommercioRSAPrivateKey(keyPair.privateKey as RSAPrivateKey),
+      VowRSAPrivateKey(keyPair.privateKey as RSAPrivateKey),
     );
   }
 
   /// Generates a new random EC key pair.
-  static Future<CommercioKeyPair<CommercioECPublicKey, CommercioECPrivateKey>>
-      generateEcKeyPair({String? type}) async {
+  static Future<VowKeyPair<VowECPublicKey, VowECPrivateKey>> generateEcKeyPair(
+      {String? type}) async {
     final keyParams = ECKeyGeneratorParameters(ECCurve_secp256k1());
     final generator = ECKeyGenerator();
     generator.init(ParametersWithRandom(keyParams, _getSecureRandom()));
     final keyPair = generator.generateKeyPair();
-    return CommercioKeyPair(
-      CommercioECPublicKey(keyPair.publicKey as ECPublicKey, keyType: type),
-      CommercioECPrivateKey(keyPair.privateKey as ECPrivateKey),
+    return VowKeyPair(
+      VowECPublicKey(keyPair.publicKey as ECPublicKey, keyType: type),
+      VowECPrivateKey(keyPair.privateKey as ECPrivateKey),
     );
   }
 }

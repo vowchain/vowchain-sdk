@@ -1,14 +1,14 @@
-import 'package:commerciosdk/utils/utils.dart';
+import 'package:vowchainsdk/utils/utils.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'commercio_doc_receipt.g.dart';
+part 'vow_doc_receipt.g.dart';
 
 /// Represents a document receipt that indicates that the document having
 /// the given [documentUuid] present inside the transaction with has [txHash]
 /// and sent by [recipientDid] has been received from the [senderDid].
 @JsonSerializable(includeIfNull: false)
-class CommercioDocReceipt extends Equatable {
+class VowDocReceipt extends Equatable {
   /// Unique receipt identifier.
   @JsonKey(name: 'uuid')
   final String uuid;
@@ -33,7 +33,7 @@ class CommercioDocReceipt extends Equatable {
   @JsonKey(name: 'proof')
   final String? proof;
 
-  CommercioDocReceipt({
+  VowDocReceipt({
     required this.uuid,
     required this.senderDid,
     required this.recipientDid,
@@ -50,8 +50,8 @@ class CommercioDocReceipt extends Equatable {
     return [uuid, senderDid, recipientDid, txHash, documentUuid, proof];
   }
 
-  factory CommercioDocReceipt.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocReceiptFromJson(json);
+  factory VowDocReceipt.fromJson(Map<String, dynamic> json) =>
+      _$VowDocReceiptFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocReceiptToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocReceiptToJson(this);
 }

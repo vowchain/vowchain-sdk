@@ -1,13 +1,13 @@
-import 'package:commerciosdk/utils/utils.dart';
+import 'package:vowchainsdk/utils/utils.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'commercio_doc.g.dart';
+part 'vow_doc.g.dart';
 
 /// Contains all the data related to a document that is sent to the chain when
 /// a user wants to share a document with another user.
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CommercioDoc extends Equatable {
+class VowDoc extends Equatable {
   @JsonKey(name: 'sender')
   final String senderDid;
 
@@ -21,19 +21,19 @@ class CommercioDoc extends Equatable {
   final String? contentUri;
 
   @JsonKey(name: 'metadata')
-  final CommercioDocMetadata metadata;
+  final VowDocMetadata metadata;
 
   @JsonKey(name: 'checksum')
-  final CommercioDocChecksum? checksum;
+  final VowDocChecksum? checksum;
 
   @JsonKey(name: 'encryption_data')
-  final CommercioDocEncryptionData? encryptionData;
+  final VowDocEncryptionData? encryptionData;
 
   /// If [doSign] is specified then the field [checksum] must be also provided.
   @JsonKey(name: 'do_sign')
-  final CommercioDoSign? doSign;
+  final VowDoSign? doSign;
 
-  CommercioDoc({
+  VowDoc({
     required this.senderDid,
     required this.recipientDids,
     required this.uuid,
@@ -63,14 +63,13 @@ class CommercioDoc extends Equatable {
     ];
   }
 
-  factory CommercioDoc.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocFromJson(json);
+  factory VowDoc.fromJson(Map<String, dynamic> json) => _$VowDocFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CommercioDocMetadata extends Equatable {
+class VowDocMetadata extends Equatable {
   @JsonKey(name: 'content_uri')
   final String contentUri;
 
@@ -78,9 +77,9 @@ class CommercioDocMetadata extends Equatable {
   final String? schemaType;
 
   @JsonKey(name: 'schema')
-  final CommercioDocMetadataSchema? schema;
+  final VowDocMetadataSchema? schema;
 
-  CommercioDocMetadata({
+  VowDocMetadata({
     required this.contentUri,
     this.schemaType,
     this.schema,
@@ -95,21 +94,21 @@ class CommercioDocMetadata extends Equatable {
     return [contentUri, schema, schemaType];
   }
 
-  factory CommercioDocMetadata.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocMetadataFromJson(json);
+  factory VowDocMetadata.fromJson(Map<String, dynamic> json) =>
+      _$VowDocMetadataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocMetadataToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocMetadataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CommercioDocMetadataSchema extends Equatable {
+class VowDocMetadataSchema extends Equatable {
   @JsonKey(name: 'uri')
   final String uri;
 
   @JsonKey(name: 'version')
   final String version;
 
-  CommercioDocMetadataSchema({
+  VowDocMetadataSchema({
     required this.uri,
     required this.version,
   })   : assert(uri.isNotEmpty && checkStringBytesLen(uri, 512)),
@@ -120,21 +119,21 @@ class CommercioDocMetadataSchema extends Equatable {
     return [uri, version];
   }
 
-  factory CommercioDocMetadataSchema.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocMetadataSchemaFromJson(json);
+  factory VowDocMetadataSchema.fromJson(Map<String, dynamic> json) =>
+      _$VowDocMetadataSchemaFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocMetadataSchemaToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocMetadataSchemaToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CommercioDocChecksum extends Equatable {
+class VowDocChecksum extends Equatable {
   @JsonKey(name: 'value')
   final String value;
 
   @JsonKey(name: 'algorithm')
-  final CommercioDocChecksumAlgorithm algorithm;
+  final VowDocChecksumAlgorithm algorithm;
 
-  CommercioDocChecksum({
+  VowDocChecksum({
     required this.value,
     required this.algorithm,
   }) : assert(value.isNotEmpty);
@@ -144,13 +143,13 @@ class CommercioDocChecksum extends Equatable {
     return [value, algorithm];
   }
 
-  factory CommercioDocChecksum.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocChecksumFromJson(json);
+  factory VowDocChecksum.fromJson(Map<String, dynamic> json) =>
+      _$VowDocChecksumFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocChecksumToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocChecksumToJson(this);
 }
 
-enum CommercioDocChecksumAlgorithm {
+enum VowDocChecksumAlgorithm {
   @JsonValue('md5')
   MD5,
 
@@ -171,14 +170,14 @@ enum CommercioDocChecksumAlgorithm {
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CommercioDocEncryptionData extends Equatable {
+class VowDocEncryptionData extends Equatable {
   @JsonKey(name: 'keys')
-  final List<CommercioDocEncryptionDataKey> keys;
+  final List<VowDocEncryptionDataKey> keys;
 
   @JsonKey(name: 'encrypted_data')
-  final Set<CommercioEncryptedData> encryptedData;
+  final Set<VowEncryptedData> encryptedData;
 
-  const CommercioDocEncryptionData({
+  const VowDocEncryptionData({
     required this.keys,
     required this.encryptedData,
   });
@@ -188,21 +187,21 @@ class CommercioDocEncryptionData extends Equatable {
     return [keys, encryptedData];
   }
 
-  factory CommercioDocEncryptionData.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocEncryptionDataFromJson(json);
+  factory VowDocEncryptionData.fromJson(Map<String, dynamic> json) =>
+      _$VowDocEncryptionDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocEncryptionDataToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocEncryptionDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CommercioDocEncryptionDataKey extends Equatable {
+class VowDocEncryptionDataKey extends Equatable {
   @JsonKey(name: 'recipient')
   final String recipientDid;
 
   @JsonKey(name: 'value')
   final String value;
 
-  CommercioDocEncryptionDataKey({
+  VowDocEncryptionDataKey({
     required this.recipientDid,
     required this.value,
   }) : assert(checkStringBytesLen(value, 512));
@@ -212,14 +211,14 @@ class CommercioDocEncryptionDataKey extends Equatable {
     return [recipientDid, value];
   }
 
-  factory CommercioDocEncryptionDataKey.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDocEncryptionDataKeyFromJson(json);
+  factory VowDocEncryptionDataKey.fromJson(Map<String, dynamic> json) =>
+      _$VowDocEncryptionDataKeyFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDocEncryptionDataKeyToJson(this);
+  Map<String, dynamic> toJson() => _$VowDocEncryptionDataKeyToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class CommercioDoSign extends Equatable {
+class VowDoSign extends Equatable {
   @JsonKey(name: 'storage_uri')
   final String storageUri;
 
@@ -227,7 +226,7 @@ class CommercioDoSign extends Equatable {
   final String signerIstance;
 
   @JsonKey(name: 'sdn_data', includeIfNull: true)
-  final Set<CommercioSdnData>? sdnData;
+  final Set<VowSdnData>? sdnData;
 
   @JsonKey(name: 'vcr_id')
   final String vcrId;
@@ -235,7 +234,7 @@ class CommercioDoSign extends Equatable {
   @JsonKey(name: 'certificate_profile')
   final String certificateProfile;
 
-  CommercioDoSign({
+  VowDoSign({
     required this.storageUri,
     required this.signerIstance,
     required this.vcrId,
@@ -250,13 +249,13 @@ class CommercioDoSign extends Equatable {
     return [storageUri, signerIstance, sdnData, vcrId, certificateProfile];
   }
 
-  factory CommercioDoSign.fromJson(Map<String, dynamic> json) =>
-      _$CommercioDoSignFromJson(json);
+  factory VowDoSign.fromJson(Map<String, dynamic> json) =>
+      _$VowDoSignFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CommercioDoSignToJson(this);
+  Map<String, dynamic> toJson() => _$VowDoSignToJson(this);
 }
 
-enum CommercioSdnData {
+enum VowSdnData {
   @JsonValue('common_name')
   COMMON_NAME,
 
@@ -277,8 +276,8 @@ enum CommercioSdnData {
 }
 
 // For more information see:
-/// https://docs.commercio.network/x/docs/#supported-encrypted-data
-enum CommercioEncryptedData {
+/// https://docs.vowchain.net/x/docs/#supported-encrypted-data
+enum VowEncryptedData {
   /// Special identifier, references the document's file contents. Means that
   /// the `aes_key` has been used to encrypt a file exchanged by other means of
   /// communication.
@@ -300,33 +299,33 @@ enum CommercioEncryptedData {
   METADATA_SCHEMA_URI,
 }
 
-extension CommercioEncryptedDataExt on CommercioEncryptedData {
+extension VowEncryptedDataExt on VowEncryptedData {
   /// Returns the string representation of the [EncryptedData] enum.
   String get value {
     switch (this) {
-      case CommercioEncryptedData.CONTENT:
+      case VowEncryptedData.CONTENT:
         return 'content';
-      case CommercioEncryptedData.CONTENT_URI:
+      case VowEncryptedData.CONTENT_URI:
         return 'content_uri';
-      case CommercioEncryptedData.METADATA_CONTENT_URI:
+      case VowEncryptedData.METADATA_CONTENT_URI:
         return 'metadata.content_uri';
-      case CommercioEncryptedData.METADATA_SCHEMA_URI:
+      case VowEncryptedData.METADATA_SCHEMA_URI:
         return 'metadata.schema.uri';
     }
   }
 
   /// Returns the [EncryptedData] that corresponds to the [value] or [null] if
   /// the [value] is not valid.
-  static CommercioEncryptedData fromValue(String value) {
+  static VowEncryptedData fromValue(String value) {
     switch (value) {
       case 'content':
-        return CommercioEncryptedData.CONTENT;
+        return VowEncryptedData.CONTENT;
       case 'content_uri':
-        return CommercioEncryptedData.CONTENT_URI;
+        return VowEncryptedData.CONTENT_URI;
       case 'metadata.content_uri':
-        return CommercioEncryptedData.METADATA_CONTENT_URI;
+        return VowEncryptedData.METADATA_CONTENT_URI;
       case 'metadata.schema.uri':
-        return CommercioEncryptedData.METADATA_SCHEMA_URI;
+        return VowEncryptedData.METADATA_SCHEMA_URI;
       default:
         throw ArgumentError(
             'Invalid argument $value. Valid values are "content", "content_uri", "metadata.content_uri" and "metadata.schema.uri"');
@@ -337,13 +336,13 @@ extension CommercioEncryptedDataExt on CommercioEncryptedData {
 /// Return [true] if the fields [doSign] and [checksum] are both not null if the
 /// first is specified.
 bool _checksumMustBePresentIfDoSign(
-  CommercioDocChecksum? checksum,
-  CommercioDoSign? doSign,
+  VowDocChecksum? checksum,
+  VowDoSign? doSign,
 ) {
   return doSign != null ? checksum != null : true;
 }
 
 /// Returns [true] if [sdnData] is [null] or, if specified, must be not empty.
-bool _sdnDataNotEmpty(Set<CommercioSdnData>? sdnData) {
+bool _sdnDataNotEmpty(Set<VowSdnData>? sdnData) {
   return sdnData != null ? sdnData.isNotEmpty : true;
 }

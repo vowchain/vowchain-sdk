@@ -1,6 +1,6 @@
 # KycHelper
 
-`KycHelper` allows to easily perform all the operations related to the commercio.network `kyc` module.
+`KycHelper` allows to easily perform all the operations related to the Vow Chain `kyc` module.
 
 ## Provided operations
 

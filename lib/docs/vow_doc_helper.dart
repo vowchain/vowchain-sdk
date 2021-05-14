@@ -1,26 +1,26 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:http/http.dart' as http;
 
-/// Allows to easily create a CommercioDoc and perform common related operations
-class CommercioDocHelper {
-  /// Creates a CommercioDoc from the given [wallet],
+/// Allows to easily create a VowDoc and perform common related operations
+class VowDocHelper {
+  /// Creates a VowDoc from the given [wallet],
   /// [recipients], [id], [metadata]
   /// and optionally [contentUri], [checksum],
   /// [doSign], [encryptedData], [aesKey].
-  static Future<CommercioDoc> fromWallet({
+  static Future<VowDoc> fromWallet({
     required Wallet wallet,
     required List<String> recipients,
     required String id,
-    required CommercioDocMetadata metadata,
+    required VowDocMetadata metadata,
     String? contentUri,
-    CommercioDocChecksum? checksum,
-    CommercioDoSign? doSign,
-    Set<CommercioEncryptedData>? encryptedData,
+    VowDocChecksum? checksum,
+    VowDoSign? doSign,
+    Set<VowEncryptedData>? encryptedData,
     Uint8List? aesKey,
     http.Client? client,
   }) async {
-    // Build a commercio document
-    var commercioDocument = CommercioDoc(
+    // Build a Vow document
+    var VowDocument = VowDoc(
       senderDid: wallet.bech32Address,
       recipientDids: recipients,
       uuid: id,
@@ -35,8 +35,8 @@ class CommercioDocHelper {
       // Get a default aes key for encryption if needed
       final key = aesKey ?? await KeysHelper.generateAesKey();
 
-      commercioDocument = await encryptField(
-        commercioDocument,
+      VowDocument = await encryptField(
+        VowDocument,
         key,
         encryptedData,
         recipients,
@@ -45,6 +45,6 @@ class CommercioDocHelper {
       );
     }
 
-    return commercioDocument;
+    return VowDocument;
   }
 }

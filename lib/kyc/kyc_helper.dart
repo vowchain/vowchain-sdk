@@ -1,7 +1,7 @@
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:sacco/sacco.dart';
 
-/// Allows to easily perform the Commercio Kyc module related transactions.
+/// Allows to easily perform the Vow Kyc module related transactions.
 class KycHelper {
   /// Buys the membership with the given [buyMemberships] memberships list
   /// and tsp [wallet].

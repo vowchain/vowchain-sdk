@@ -1,15 +1,15 @@
 import 'dart:convert';
 
 import 'package:asn1lib/asn1lib.dart';
-import 'package:commerciosdk/entities/export.dart';
+import 'package:vowchainsdk/entities/export.dart';
 import 'package:pointycastle/export.dart';
 
 /// Wrapper of the pointyCastle RSAPublicKey
-class CommercioRSAPublicKey implements CommercioPublicKey {
+class VowRSAPublicKey implements VowPublicKey {
   final RSAPublicKey publicKey;
-  final CommercioRSAKeyType keyType;
+  final VowRSAKeyType keyType;
 
-  CommercioRSAPublicKey(
+  VowRSAPublicKey(
     this.publicKey, {
     required this.keyType,
   });
@@ -38,10 +38,10 @@ class CommercioRSAPublicKey implements CommercioPublicKey {
 }
 
 /// Wrapper of the pointyCastle RSAPrivateKey
-class CommercioRSAPrivateKey implements CommercioPrivateKey {
+class VowRSAPrivateKey implements VowPrivateKey {
   final RSAPrivateKey privateKey;
 
-  CommercioRSAPrivateKey(this.privateKey);
+  VowRSAPrivateKey(this.privateKey);
 
   /// Plain PKCS8 private key format:
   /// ```
@@ -115,19 +115,19 @@ class CommercioRSAPrivateKey implements CommercioPrivateKey {
   }
 }
 
-/// Defines the two types of possible [CommercioRSAPublicKey] types.
-enum CommercioRSAKeyType {
+/// Defines the two types of possible [VowRSAPublicKey] types.
+enum VowRSAKeyType {
   verification,
   signature,
 }
 
-extension CommercioRSAKeyTypeExt on CommercioRSAKeyType {
+extension VowRSAKeyTypeExt on VowRSAKeyType {
   /// Returns the enum value as string.
   String get value {
     switch (this) {
-      case CommercioRSAKeyType.verification:
+      case VowRSAKeyType.verification:
         return 'RsaVerificationKey2018';
-      case CommercioRSAKeyType.signature:
+      case VowRSAKeyType.signature:
         return 'RsaSignatureKey2018';
     }
   }

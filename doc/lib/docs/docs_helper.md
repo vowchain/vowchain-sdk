@@ -1,6 +1,6 @@
 # Docs helper
 
-Docs helper allows to easily perform all the operations related to the commercio.network `docs` module.
+Docs helper allows to easily perform all the operations related to the Vow Chain `docs` module.
 
 ## Provided operations
 
@@ -11,14 +11,14 @@ Docs helper allows to easily perform all the operations related to the commercio
     ```dart
     static Future<TransactionResult> shareDocument({
       required String id,
-      required CommercioDocMetadata metadata,
+      required VowDocMetadata metadata,
       required List<String> recipients,
       required Wallet wallet,
       String? contentUri,
-      CommercioDoSign? doSign,
-      CommercioDocChecksum? checksum,
+      VowDoSign? doSign,
+      VowDocChecksum? checksum,
       Uint8List? aesKey,
-      Set<CommercioEncryptedData>? encryptedData,
+      Set<VowEncryptedData>? encryptedData,
       StdFee? fee,
       BroadcastingMode? mode,
       http.Client? client,
@@ -31,18 +31,18 @@ Docs helper allows to easily perform all the operations related to the commercio
     final txResult = await DocsHelper.shareDocument(
       wallet: wallet,
       id: Uuid().v4(),
-      recipients: ['did:com:14ttg3eyu88jda8udvxpwjl2pwxemh72w0grsau'],
-      metadata: CommercioDocMetadata(
+      recipients: ['did:vow:14ttg3eyu88jda8udvxpwjl2pwxemh72w0grsau'],
+      metadata: VowDocMetadata(
         contentUri: 'https://example.com/document.pdf',
         schemaType: '-',
       ),
     );
     ```
 
-2. Create a new transaction that allows to share a list of previously generated documents `commercioDocsList` signing the transaction with `wallet`. Optionally `fee` and broadcasting `mode` parameters can be specified.
+2. Create a new transaction that allows to share a list of previously generated documents `VowDocsList` signing the transaction with `wallet`. Optionally `fee` and broadcasting `mode` parameters can be specified.
 
     ```dart
-    static Future<List<CommercioDoc>> getSentDocuments({
+    static Future<List<VowDoc>> getSentDocuments({
       required String address,
       required NetworkInfo networkInfo,
       http.Client? client,
@@ -52,23 +52,23 @@ Docs helper allows to easily perform all the operations related to the commercio
     Example:
 
     ```dart
-    final commercioDoc = await CommercioDocHelper.fromWallet(
+    final VowDoc = await VowDocHelper.fromWallet(
       wallet: wallet,
       id: Uuid().v4(),
-      recipients: ['did:com:14ttg3eyu88jda8udvxpwjl2pwxemh72w0grsau'],
-      metadata: CommercioDocMetadata(
+      recipients: ['did:vow:14ttg3eyu88jda8udvxpwjl2pwxemh72w0grsau'],
+      metadata: VowDocMetadata(
         contentUri: 'https://example.com/document.pdf',
         schemaType: '-',
       ),
     );
 
-    final txResult = await DocsHelper.shareDocumentsList([commercioDoc], wallet);
+    final txResult = await DocsHelper.shareDocumentsList([VowDoc], wallet);
     ```
 
-3. Returns the list of all the `CommercioDoc` that the specified `address` has sent
+3. Returns the list of all the `VowDoc` that the specified `address` has sent
 
     ```dart
-    static Future<List<CommercioDoc>> getSentDocuments({
+    static Future<List<VowDoc>> getSentDocuments({
       required String address,
       required NetworkInfo networkInfo,
       http.Client? client,
@@ -84,10 +84,10 @@ Docs helper allows to easily perform all the operations related to the commercio
     );
     ```
 
-4. Returns the list of all the `CommercioDoc` that the specified `address` has received
+4. Returns the list of all the `VowDoc` that the specified `address` has received
 
     ```dart
-    static Future<List<CommercioDoc>> getReceivedDocuments({
+    static Future<List<VowDoc>> getReceivedDocuments({
       required String address,
       required NetworkInfo networkInfo,
       http.Client? client,
@@ -119,11 +119,11 @@ Docs helper allows to easily perform all the operations related to the commercio
     })
     ```
 
-6. Creates a new transaction which sends a list of previously generated receipts  `commercioDocReceiptsList`. Optionally `fee` and broadcasting `mode` parameters can be specified.
+6. Creates a new transaction which sends a list of previously generated receipts  `VowDocReceiptsList`. Optionally `fee` and broadcasting `mode` parameters can be specified.
 
    ```dart
    static Future<TransactionResult> sendDocumentReceiptsList(
-      List<CommercioDocReceipt> commercioDocReceiptsList,
+      List<VowDocReceipt> VowDocReceiptsList,
       Wallet wallet, {
       StdFee? fee,
       BroadcastingMode? mode,
@@ -131,20 +131,20 @@ Docs helper allows to easily perform all the operations related to the commercio
    })
    ```
 
-7. Returns the list of all the `CommercioDocReceipt` that have been sent from the given `address`
+7. Returns the list of all the `VowDocReceipt` that have been sent from the given `address`
 
     ```dart
-    static Future<List<CommercioDocReceipt>> getSentReceipts({
+    static Future<List<VowDocReceipt>> getSentReceipts({
       required String address,
       required NetworkInfo networkInfo,
       http.Client? client,
     })
     ```
 
-8. Returns the list of all the `CommercioDocRecepit` that have been received from the given `address`
+8. Returns the list of all the `VowDocRecepit` that have been received from the given `address`
 
     ```dart
-    static Future<List<CommercioDocReceipt>> getReceivedReceipts({
+    static Future<List<VowDocReceipt>> getReceivedReceipts({
       required String address,
       required NetworkInfo networkInfo,
       http.Client? client,
@@ -155,7 +155,7 @@ Docs helper allows to easily perform all the operations related to the commercio
 
 ```dart
 final info = NetworkInfo(
-  bech32Hrp: 'did:com:',
+  bech32Hrp: 'did:vow:',
   lcdUrl: Uri.parse('http://localhost:1317'),
 );
 
@@ -167,16 +167,16 @@ final recipientWallet = Wallet.derive(recipientMnemonic, info);
 final recipientDid = recipientWallet.bech32Address;
 
 final docId = Uuid().v4();
-final checksum = CommercioDocChecksum(
+final checksum = VowDocChecksum(
   value: "a00ab326fc8a3dd93ec84f7e7773ac2499b381c4833e53110107f21c3b90509c",
-  algorithm: CommercioDocChecksumAlgorithm.SHA256,
+  algorithm: VowDocChecksumAlgorithm.SHA256,
 );
-final doSign = CommercioDoSign(
-  storageUri: "http://www.commercio.network",
-  signerIstance: "did:com:1cc65t29yuwuc32ep2h9uqhnwrregfq230lf2rj",
+final doSign = VowDoSign(
+  storageUri: "http://vowchain.net",
+  signerIstance: "did:vow:1cc65t29yuwuc32ep2h9uqhnwrregfq230lf2rj",
   sdnData: {
-    CommercioSdnData.COMMON_NAME,
-    CommercioSdnData.SURNAME,
+    VowSdnData.COMMON_NAME,
+    VowSdnData.SURNAME,
   },
   vcrId: "xxxxx",
   certificateProfile: "xxxxx",
@@ -187,9 +187,9 @@ try {
   final response = await DocsHelper.shareDocument(
     id: docId,
     contentUri: 'https://example.com/document',
-    metadata: CommercioDocMetadata(
+    metadata: VowDocMetadata(
       contentUri: 'https://example.com/document/metadata',
-      schema: CommercioDocMetadataSchema(
+      schema: VowDocMetadataSchema(
         uri: 'https://example.com/custom/metadata/schema',
         version: '1.0.0',
       ),
@@ -197,11 +197,11 @@ try {
     recipients: [recipientDid],
     wallet: senderWallet,
     checksum: checksum,
-    encryptedData: const {CommercioEncryptedData.CONTENT_URI},
+    encryptedData: const {VowEncryptedData.CONTENT_URI},
     doSign: doSign,
     fee: const StdFee(
       gas: '200000',
-      amount: [StdCoin(denom: 'ucommercio', amount: '10000')],
+      amount: [StdCoin(denom: 'uvow', amount: '10000')],
     ),
   );
 

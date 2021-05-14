@@ -1,11 +1,11 @@
 module.exports = {
-  title: 'Commercio.network Dart SDK Documentation',
-  description: 'Documentation for the Commercio.network blockhain Dart SDK.',
+  title: 'Vow Chain Dart SDK Documentation',
+  description: 'Documentation for the Vow Chain blockhain Dart SDK.',
   head: [
     [
       'link',
       {
-        rel: 'commercio-icon',
+        rel: 'Vow-icon',
         href: '/.vuepress/icon.png',
       },
     ],
@@ -14,7 +14,7 @@ module.exports = {
     lineNumbers: true,
   },
   themeConfig: {
-    repo: 'commercionetwork/commercio-sdk.dart',
+    repo: 'vowchain/Vow-sdk.dart',
     editLinks: true,
     docsDir: 'doc',
     docsBranch: 'master',
@@ -22,8 +22,8 @@ module.exports = {
     lastUpdated: true,
     nav: [
       {
-        text: 'Commercio.network',
-        link: 'https://commercio.network',
+        text: 'Vow Chain',
+        link: 'https://Vow Chain',
       },
     ],
     sidebarDepth: 2,
@@ -47,10 +47,10 @@ module.exports = {
         collapsable: true,
         children: [
           ['lib/docs/docs_helper', 'DocsHelper'],
-          ['lib/docs/commercio_doc_helper', 'CommercioDocHelper'],
+          ['lib/docs/vow_doc_helper', 'VowDocHelper'],
           [
-            'lib/docs/commercio_doc_receipt_helper',
-            'CommercioDocReceiptHelper',
+            'lib/docs/vow_doc_receipt_helper',
+            'VowDocReceiptHelper',
           ],
         ],
       },

@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'commercio_doc_receipt.dart';
+part of 'vow_doc_receipt.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CommercioDocReceipt _$CommercioDocReceiptFromJson(Map<String, dynamic> json) {
-  return CommercioDocReceipt(
+VowDocReceipt _$VowDocReceiptFromJson(Map<String, dynamic> json) {
+  return VowDocReceipt(
     uuid: json['uuid'] as String,
     senderDid: json['sender'] as String,
     recipientDid: json['recipient'] as String,
@@ -17,8 +17,7 @@ CommercioDocReceipt _$CommercioDocReceiptFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$CommercioDocReceiptToJson(
-        CommercioDocReceipt instance) =>
+Map<String, dynamic> _$VowDocReceiptToJson(VowDocReceipt instance) =>
     <String, dynamic>{
       'uuid': instance.uuid,
       'sender': instance.senderDid,

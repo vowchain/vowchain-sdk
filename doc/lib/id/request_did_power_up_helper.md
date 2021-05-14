@@ -11,7 +11,7 @@
       required Wallet wallet,
       required String pairwiseDid,
       required List<StdCoin> amount,
-      required CommercioRSAPrivateKey privateKey,
+      required VowRSAPrivateKey privateKey,
       http.Client? client,
     })
     ```

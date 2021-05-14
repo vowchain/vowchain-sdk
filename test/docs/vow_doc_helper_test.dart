@@ -1,15 +1,15 @@
 import 'dart:io';
 
-import 'package:commerciosdk/export.dart';
+import 'package:vowchainsdk/export.dart';
 import 'package:http/http.dart';
 import 'package:http/testing.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
 void main() {
-  group('Functions of "CommercioDocHelper" class;', () {
+  group('Functions of "VowDocHelper" class;', () {
     final networkInfo = NetworkInfo(
-      bech32Hrp: 'did:com:',
+      bech32Hrp: 'did:vow:',
       lcdUrl: Uri.parse(''),
     );
     const mnemonicString =
@@ -17,12 +17,12 @@ void main() {
     final mnemonic = mnemonicString.split(' ');
     final wallet = Wallet.derive(mnemonic, networkInfo);
     final senderDid = wallet.bech32Address;
-    final recipientDids = ['did:com:1acdefg', 'did:com:1acdefg'];
-    const recipientWithDDO = 'did:com:1fswhnd44fv2qk7ls4gflxh7spu7xpqdue54s3m';
+    final recipientDids = ['did:vow:1acdefg', 'did:vow:1acdefg'];
+    const recipientWithDDO = 'did:vow:1fswhnd44fv2qk7ls4gflxh7spu7xpqdue54s3m';
     final uuid = const Uuid().v4();
-    final metadata = CommercioDocMetadata(
+    final metadata = VowDocMetadata(
       contentUri: 'https://example.com/document/metadata',
-      schema: CommercioDocMetadataSchema(
+      schema: VowDocMetadataSchema(
         uri: 'https://example.com/custom/metadata/schema',
         version: '7.0.0',
       ),
@@ -31,40 +31,38 @@ void main() {
         File('test_resources/get_wallet_identity_response.json')
             .readAsStringSync();
 
-    test('"fromWallet()" returns a well-formed "CommercioDoc" object.',
-        () async {
+    test('"fromWallet()" returns a well-formed "VowDoc" object.', () async {
       final mockClient =
           MockClient((req) async => Response(getWalletIdentityResponse, 200));
 
-      final expectedCommercioDoc = CommercioDoc(
+      final expectedVowDoc = VowDoc(
         senderDid: senderDid,
         recipientDids: const [recipientWithDDO],
         uuid: uuid,
         metadata: metadata,
       );
 
-      final commercioDoc = await CommercioDocHelper.fromWallet(
+      final vowDoc = await VowDocHelper.fromWallet(
         wallet: wallet,
         recipients: const [recipientWithDDO],
         id: uuid,
         metadata: metadata,
       );
 
-      expect(commercioDoc.toJson(), expectedCommercioDoc.toJson());
+      expect(vowDoc.toJson(), expectedVowDoc.toJson());
 
-      final commercioDocWithEncryptedData = await CommercioDocHelper.fromWallet(
+      final VowDocWithEncryptedData = await VowDocHelper.fromWallet(
         wallet: wallet,
         recipients: const [recipientWithDDO],
         id: uuid,
         metadata: metadata,
         contentUri: 'contentUri',
-        encryptedData: {CommercioEncryptedData.CONTENT_URI},
+        encryptedData: {VowEncryptedData.CONTENT_URI},
         client: mockClient,
       );
 
       expect(
-        commercioDocWithEncryptedData.contentUri !=
-            expectedCommercioDoc.contentUri,
+        VowDocWithEncryptedData.contentUri != expectedVowDoc.contentUri,
         isTrue,
       );
     });
@@ -76,13 +74,13 @@ void main() {
           MockClient((req) async => Response('', 404));
 
       expect(
-        () => CommercioDocHelper.fromWallet(
+        () => VowDocHelper.fromWallet(
           wallet: wallet,
           recipients: recipientDids,
           id: uuid,
           metadata: metadata,
           contentUri: 'contentUri',
-          encryptedData: {CommercioEncryptedData.CONTENT_URI},
+          encryptedData: {VowEncryptedData.CONTENT_URI},
           client: mockClientEveryoneNotFound,
         ),
         throwsA(isA<WalletIdentityNotFoundException>()),
@@ -97,13 +95,13 @@ void main() {
       });
 
       expect(
-        () => CommercioDocHelper.fromWallet(
+        () => VowDocHelper.fromWallet(
           wallet: wallet,
           recipients: recipientDids,
           id: uuid,
           metadata: metadata,
           contentUri: 'contentUri',
-          encryptedData: {CommercioEncryptedData.CONTENT_URI},
+          encryptedData: {VowEncryptedData.CONTENT_URI},
           client: mockClientOnyOneNotFound,
         ),
         throwsA(isA<WalletIdentityNotFoundException>()),
@@ -114,12 +112,12 @@ void main() {
         'fromWallet() should throw an ArgumentError if passing CONTENT_URI with null contentUri param',
         () async {
       expect(
-        () => CommercioDocHelper.fromWallet(
+        () => VowDocHelper.fromWallet(
           wallet: wallet,
           recipients: recipientDids,
           id: uuid,
           metadata: metadata,
-          encryptedData: {CommercioEncryptedData.CONTENT_URI},
+          encryptedData: {VowEncryptedData.CONTENT_URI},
         ),
         throwsArgumentError,
       );
@@ -129,16 +127,16 @@ void main() {
         'fromWallet() should throw an ArgumentError if passing METADATA_SCHEMA_URI with null metadata.schema param',
         () async {
       expect(
-        () => CommercioDocHelper.fromWallet(
+        () => VowDocHelper.fromWallet(
           wallet: wallet,
           recipients: recipientDids,
           id: uuid,
-          metadata: CommercioDocMetadata(
+          metadata: VowDocMetadata(
             contentUri: 'contentUri',
             schema: null,
             schemaType: 'schemaType',
           ),
-          encryptedData: {CommercioEncryptedData.METADATA_SCHEMA_URI},
+          encryptedData: {VowEncryptedData.METADATA_SCHEMA_URI},
         ),
         throwsArgumentError,
       );

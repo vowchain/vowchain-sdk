@@ -1,4 +1,4 @@
-import 'package:commerciosdk/entities/id/request_did_power_up.dart';
+import 'package:vowchainsdk/entities/id/request_did_power_up.dart';
 import 'package:sacco/sacco.dart';
 
 /// Represents the transaction message that should be used when asking
@@ -8,7 +8,7 @@ class MsgRequestDidPowerUp extends StdMsg {
 
   MsgRequestDidPowerUp({
     required this.requestDidPowerUp,
-  }) : super(type: 'commercio/MsgRequestDidPowerUp', value: <String, String>{});
+  }) : super(type: 'Vow/MsgRequestDidPowerUp', value: <String, String>{});
 
   @override
   Map<String, dynamic> get value => requestDidPowerUp.toJson();
